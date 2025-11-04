@@ -1,8 +1,8 @@
 =============
-package-name
+ml-algorithms
 =============
 
-This is the documentation of **package-name project**.
+This is the documentation of **ml-algorithms project**.
 
 Contents
 ========
