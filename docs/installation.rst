@@ -36,8 +36,8 @@ Quick Start
 .. code-block::
 
     # Using conda (recommended)
-    conda create -n env_config python=3.14
-    conda activate env_config
+    conda create -n ml-algorithms-env python=3.14
+    conda activate ml-algorithms-env
 
     # OR using venv
     python -m venv venv

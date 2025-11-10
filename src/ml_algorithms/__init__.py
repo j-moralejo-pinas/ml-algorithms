@@ -1,6 +1,4 @@
-"""
-ml_algorithms
-"""
+"""ml_algorithms."""
 
 try:
     from ._version import version as __version__
