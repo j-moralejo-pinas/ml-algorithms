@@ -98,7 +98,8 @@ def get_closest_constrained_point(points: Array, queries: Array, constrains: Arr
     cluster_assignments = jnp.zeros(queries.shape[0], dtype=jnp.int32)
     for idx in range(queries.shape[0]):
         if jnp.all(distances[idx] == jnp.inf):
-            raise ValueError("No feasible cluster assignment for some data points.")
+            msg = "No feasible cluster assignment for some data points."
+            raise ValueError(msg)
         cluster_assignments = cluster_assignments.at[idx].set(jnp.argmin(distances[idx]))
         distances = distances.at[:, cluster_assignments[idx]].add(constrains[idx])
     return cluster_assignments
