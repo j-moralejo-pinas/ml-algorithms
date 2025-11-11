@@ -209,6 +209,13 @@ class LinearRegression(BaseSLAlgo):
         Random key for initialization.
     logistic_regression : bool
         Whether to use logistic regression.
+
+    Parameters
+    ----------
+    key : Array | None
+        Random key for initialization. If None, a default key is used.
+    logistic_regression : bool
+        Whether to use logistic regression.
     """
 
     coefficients: Array

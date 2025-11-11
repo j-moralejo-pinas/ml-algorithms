@@ -138,8 +138,8 @@ def constrained_clustering_dataset(
     -------
     list[list[float]]
         Input features.
-    list[int]
-        Constrains matrix.
+    list[list[int]]
+        Constraints matrix (1 for must-link, 0 for no constraint).
     """
     cluster_centers = [
         [random.uniform(-1, 1) for _ in range(n_features)] for _ in range(n_clusters)
@@ -189,6 +189,8 @@ def generate_dataset(
         The number of features in the dataset.
     n_samples : int
         The number of samples in the dataset.
+    n_clusters : int, optional
+        The number of clusters (for clustering datasets), by default 3.
 
     Returns
     -------
@@ -196,6 +198,11 @@ def generate_dataset(
         Generated dataset in the specified data structure type.
     Any
         Generated target values in the specified data structure type.
+
+    Raises
+    ------
+    ValueError
+        If an unsupported dataset style or data structure type is provided.
     """
     if dataset_style == "linear_regression":
         x, y = linear_regression_dataset(n_features=n_features, n_samples=n_samples)

@@ -1,7 +1,6 @@
 """K-Means Clustering Algorithm Implementation."""
 
 from functools import partial
-from typing import Any
 
 import jax
 from jax import Array
@@ -249,6 +248,11 @@ class KMeans(BaseULAlgo):
         Cluster centroids of shape (n_clusters, n_features).
     key : Array
         JAX random key for reproducibility.
+
+    Parameters
+    ----------
+    key : Array | None, optional
+        JAX random key for reproducibility. If None, uses a default key (42).
     """
 
     centroids: Array
@@ -256,14 +260,6 @@ class KMeans(BaseULAlgo):
     key: Array
 
     def __init__(self, key: Array | None = None) -> None:
-        """
-        Initialize KMeans clustering.
-
-        Parameters
-        ----------
-        key : Array | None, optional
-            JAX random key for reproducibility. If None, uses a default key (42).
-        """
         self.key = key if key is not None else jax.random.key(42)
 
     def _get_random_key(self) -> Array:
@@ -343,22 +339,6 @@ class KMeans(BaseULAlgo):
         """
         assignments = get_closest_point(self.centroids, x)
         return get_wcsd_per_cluster(self.centroids, x, assignments)
-
-    def transform_list(self, data: list[Any]) -> Array:
-        """
-        Convert a Python list to a JAX array.
-
-        Parameters
-        ----------
-        data : list[Any]
-            Python list to convert.
-
-        Returns
-        -------
-        Array
-            JAX array representation of the input list.
-        """
-        return jnp.array(data)
 
 
 class COPKMeans(KMeans):

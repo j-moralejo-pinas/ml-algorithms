@@ -18,7 +18,7 @@ class BaseSLAlgo(BaseAlgo):
         ----------
         x : Any
             Input features.
-        y : Any
+        y : Any | None
             Target values.
 
         Returns
